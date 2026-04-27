@@ -18,10 +18,7 @@ jobs:
 
     - name: Run Wokwi Simulation
       uses: wokwi/wokwi-ci-action@v1
-      env:
-        # Aqui ele pega o Secret exato que você criou lá nas configurações do GitHub
-        WOKWI_CLI_TOKEN: ${{ secrets.WOKWI_API_KEY }}
       with:
-        # Ele vai rodar a placa e esperar essa frase aparecer no terminal para dar o OK
+        token: ${{ secrets.WOKWI_API_KEY }}
         expect_text: 'Sistema Iniciado'
         timeout: 15000
