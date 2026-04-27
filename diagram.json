@@ -1,7 +1,71 @@
 {
   "version": 1,
-  "author": "Uri Shaked",
+  "author": "Paulo Gabriel",
   "editor": "wokwi",
-  "parts": [ { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} } ],
-  "connections": [ [ "esp:TX", "$serialMonitor:RX", "", [] ], [ "esp:RX", "$serialMonitor:TX", "", [] ] ]
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led_foco",
+      "top": -100,
+      "left": 80,
+      "attrs": { "color": "red", "label": "FOCO" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_pausa",
+      "top": -100,
+      "left": 130,
+      "attrs": { "color": "green", "label": "PAUSA" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_ocioso",
+      "top": -100,
+      "left": 180,
+      "attrs": { "color": "yellow", "label": "OCIOSO" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn",
+      "top": 120,
+      "left": 60,
+      "attrs": { "color": "blue", "label": "START/STOP" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res1",
+      "top": -40,
+      "left": 80,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res2",
+      "top": -40,
+      "left": 130,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "res3",
+      "top": -40,
+      "left": 180,
+      "attrs": { "value": "330" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP15", "res1:2", "red", [ "v0" ] ],
+    [ "res1:1", "led_foco:A", "red", [ "v0" ] ],
+    [ "pico:GP14", "res2:2", "green", [ "v0" ] ],
+    [ "res2:1", "led_pausa:A", "green", [ "v0" ] ],
+    [ "pico:GP13", "res3:2", "yellow", [ "v0" ] ],
+    [ "res3:1", "led_ocioso:A", "yellow", [ "v0" ] ],
+    [ "led_foco:C", "pico:GND.1", "black", [ "h-114.2", "v89.95" ] ],
+    [ "led_pausa:C", "pico:GND.1", "black", [ "v0.4", "h-183.4", "v89.55" ] ],
+    [ "led_ocioso:C", "pico:GND.1", "black", [ "v0.4", "h-252.6", "v89.55" ] ],
+    [ "btn:2.l", "pico:GND.2", "black", [ "v0" ] ],
+    [ "btn:1.l", "pico:GP16", "blue", [ "v0" ] ]
+  ],
+  "dependencies": {}
 }
