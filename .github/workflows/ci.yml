@@ -1,4 +1,5 @@
-name: ESP32 Filesystem Build
+- name: Run Wokwi CI
+  uses: wokwi/wokwi-ci-action@v1
 
 on:
   push:
@@ -32,3 +33,6 @@ jobs:
         token: ${{ secrets.WOKWI_CLI_TOKEN }}
         path: /
         expect_text: 'Teste'
+
+  env:
+      WOKWI_CLI_TOKEN: ${{ secrets.TOKEN }}
