@@ -19,7 +19,8 @@ jobs:
     - name: Run Wokwi Simulation
       uses: wokwi/wokwi-ci-action@v1
       env:
-        WOKWI_CLI_TOKEN: ${{ secrets.WOKWI_API_KEY }}
+        # Agora sim, puxando o nome EXATO que está no seu GitHub!
+        WOKWI_CLI_TOKEN: ${{ secrets.TOKEN }}
       with:
         expect_text: 'Sistema Iniciado'
         timeout: 15000
